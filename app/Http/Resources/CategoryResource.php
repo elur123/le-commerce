@@ -18,7 +18,7 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'label' => $this->label,
             'image' => $this->image,
-            'image_url' => str_replace('public', 'storage', $this->image_url),
+            'image_url' => config('app.url') .'/'. str_replace('public', 'storage', $this->image_url),
             'actions' => [
                 ['label' => 'Edit', 'href' => route('categories.edit', $this), 'type' => 'get'],
                 ['label' => 'Delete', 'href' => route('categories.destroy', $this), 'type' => 'get']

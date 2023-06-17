@@ -7,7 +7,10 @@ import Categories from '@/Pages/LandingPage/Components/Categories.vue'
 import DailyDiscover from '@/Pages/LandingPage/Components/DailyDiscover.vue'
 import Footer from '@/Pages/LandingPage/Components/Footer.vue'
 
-defineProps({})
+defineProps({
+    banners: Object,
+    categories: Object
+})
 </script>
 
 <template>
@@ -16,8 +19,8 @@ defineProps({})
     <div class="w-full h-full">
         <Header />
         <div id="main mb-8">
-            <Banner />
-            <Categories />
+            <Banner :banners="banners.data" />
+            <Categories :categories="categories.data" />
             <DailyDiscover />
         </div>
         <Footer />
