@@ -1,137 +1,53 @@
 <script setup>
-import { HeartIcon } from '@heroicons/vue/outline'
+import { usePage } from '@inertiajs/vue3'
 
-import Ratings from '@/Components/Ratings.vue'
+import Product from '@/Pages/LandingPage/Partials/Product.vue'
 import Button from '@/Components/Button.vue'
+import axios from 'axios'
+
+const filter = usePage().props.filter
+const meta = usePage().props.products.meta
+
+let page = filter.page ?? 2
+
+const { products } = defineProps({
+    products: {
+        type: Array,
+        default: []
+    }
+})
+
+const loadMore = async () => {
+
+    await axios.get(`${filter.url}?page=${page}`).then(res => {
+        products.push(...res.data.products)
+    })
+
+    page += 1
+}
 
 </script>
 
 <template>
-    <div id="products" class="w-full my-8 px-24">
+    <div id="products" class="w-full my-8 px-2 md:px-24">
         <h3 class="text-2xl font-bold mb-8">DAILY DISCOVER</h3>
-        <div id="list">
-            <div class="grid grid-cols-4 gap-4">
-                <div id="product">
-                    <div id="head" class="relative h-60 rounded-lg bg-gray-300">
-                        <div class="absolute p-2 top-4 right-4 bg-white rounded-full cursor-pointer">
-                            <HeartIcon
-                                class="flex-shrink-0 w-4 h-4"
-                                aria-hidden="true"
-                            />
-                        </div>
-                    </div>
-                    <div id="body" class="py-2 space-y-2">
-                        <div class="font-bold flex items-center justify-between">
-                            <h3>Product name</h3>
-                            <p>89.00</p>
-                        </div>
-                        <div id="details">
-                            <p>Product details lorem lorem lorem ....</p>
-                        </div>
-                        <div id="ratings">
-                            <Ratings />
-                        </div>
-                        <div id="actions">
-                            <Button
-                                class="border-2 border-gray-600 rounded-xl"
-                                variant="none"
-                            >
-                                Add to Cart
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-                <div id="product">
-                    <div id="head" class="relative h-60 rounded-lg bg-gray-300">
-                        <div class="absolute p-2 top-4 right-4 bg-white rounded-full cursor-pointer">
-                            <HeartIcon
-                                class="flex-shrink-0 w-4 h-4"
-                                aria-hidden="true"
-                            />
-                        </div>
-                    </div>
-                    <div id="body" class="py-2 space-y-2">
-                        <div class="font-bold flex items-center justify-between">
-                            <h3>Product name</h3>
-                            <p>89.00</p>
-                        </div>
-                        <div id="details">
-                            <p>Product details lorem lorem lorem ....</p>
-                        </div>
-                        <div id="ratings">
-                            <Ratings />
-                        </div>
-                        <div id="actions">
-                            <Button
-                                class="border-2 border-gray-600 rounded-xl"
-                                variant="none"
-                            >
-                                Add to Cart
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-                <div id="product">
-                    <div id="head" class="relative h-60 rounded-lg bg-gray-300">
-                        <div class="absolute p-2 top-4 right-4 bg-white rounded-full cursor-pointer">
-                            <HeartIcon
-                                class="flex-shrink-0 w-4 h-4"
-                                aria-hidden="true"
-                            />
-                        </div>
-                    </div>
-                    <div id="body" class="py-2 space-y-2">
-                        <div class="font-bold flex items-center justify-between">
-                            <h3>Product name</h3>
-                            <p>89.00</p>
-                        </div>
-                        <div id="details">
-                            <p>Product details lorem lorem lorem ....</p>
-                        </div>
-                        <div id="ratings">
-                            <Ratings />
-                        </div>
-                        <div id="actions">
-                            <Button
-                                class="border-2 border-gray-600 rounded-xl"
-                                variant="none"
-                            >
-                                Add to Cart
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-                <div id="product">
-                    <div id="head" class="relative h-60 rounded-lg bg-gray-300">
-                        <div class="absolute p-2 top-4 right-4 bg-white rounded-full cursor-pointer">
-                            <HeartIcon
-                                class="flex-shrink-0 w-4 h-4"
-                                aria-hidden="true"
-                            />
-                        </div>
-                    </div>
-                    <div id="body" class="py-2 space-y-2">
-                        <div class="font-bold flex items-center justify-between">
-                            <h3>Product name</h3>
-                            <p>89.00</p>
-                        </div>
-                        <div id="details">
-                            <p>Product details lorem lorem lorem ....</p>
-                        </div>
-                        <div id="ratings">
-                            <Ratings />
-                        </div>
-                        <div id="actions">
-                            <Button
-                                class="border-2 border-gray-600 rounded-xl"
-                                variant="none"
-                            >
-                                Add to Cart
-                            </Button>
-                        </div>
-                    </div>
-                </div>
+        <div id="list" class="">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <Product 
+                    v-for="(product, index) in products" 
+                    :key="index" 
+                    :details="product"
+                />
             </div>
+        </div>
+        <div v-if="page !== meta.last_page && meta.last_page !== 1" class="grid place-content-center mt-8">
+            <Button 
+                variant="none" 
+                class="border border-gray-500 px-4 py-2 rounded-xl hover:bg-orange-500 hover:text-white hover:border-orange-500"
+                @click="loadMore"
+            >
+                Load more...
+            </Button>
         </div>
     </div>
 </template>

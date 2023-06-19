@@ -22,4 +22,19 @@ class StoreProduct extends Model
     protected $casts = [
         'is_available' => 'boolean',
     ];
+
+    /**
+     * 
+     * Relationship functions
+     */
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function store()
+    {
+        return $this->belongsTo(Store::class, 'store_id');
+    }
 }

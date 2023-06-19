@@ -9,7 +9,7 @@ defineProps({
 })
 </script>
 <template>
-    <div id="categories" class="w-full h-40 my-8 px-24">
+    <div id="categories" class="w-full h-40 my-8 px-2 md:px-24">
         <Scrollbar 
             :data="categories"
             class="h-full" 

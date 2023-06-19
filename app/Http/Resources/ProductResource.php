@@ -17,7 +17,7 @@ class ProductResource extends JsonResource
         return [
             'id' => $this->id,
             'image' => $this->featured_image,
-            'image_url' => str_replace('public', 'storage', $this->featured_image_url),
+            'image_url' => config('app.url') .'/'. str_replace('public', 'storage', $this->featured_image_url),
             'name' => $this->name,
             'description' => $this->description,
             'category' => $this->category->label,

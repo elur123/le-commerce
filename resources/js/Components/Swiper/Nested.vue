@@ -34,9 +34,9 @@ const modules = [Pagination]
             <div class="absolute top-0 left-0 w-full h-full z-10">  
               <img class="h-full w-full" :src="banner.image_url" :alt="banner.image">
             </div>
-            <div class="w-full h-full px-24 z-20 bg-gray-900/70 flex items-center">
+            <!-- <div class="w-full h-full px-24 z-20 bg-gray-900/70 flex items-center">
               <h1 class="uppercase text-white text-4xl font-bold">{{ banner.title }}</h1>
-            </div>
+            </div> -->
         </div>
     </swiper-slide>
   </swiper>

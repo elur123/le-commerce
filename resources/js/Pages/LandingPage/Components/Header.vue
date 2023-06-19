@@ -29,20 +29,20 @@ const shouldHaveScrolledBackground = computed(() => {
 
 <template>
     <div class="bg-orange-500" id="top-nav">
-        <div class="px-24 flex justify-between items-center">
-            <div class="text-white text-sm flex items-center gap-2">
+        <div class="px-2 py-2 md:px-24 flex justify-between items-center overflow-hidden">
+            <div class="text-white text-[0.45rem] md:text-sm flex items-center gap-2">
                 <PhoneIcon
                     class="flex-shrink-0 w-4 h-4"
                     aria-hidden="true"
                 />
                 <p>+639555347395</p>
             </div>
-            <div class="text-white text-sm flex items-center gap-4">
+            <div class="text-white text-[0.45rem] md:text-sm flex items-center gap-4">
                 <p class="px-4 border-r">Get 50% off on selected items</p>
                 <p>Shop Now</p>
             </div>
-            <div class="text-sm relative">
-                <ListBox textColor="text-white" />
+            <div class="text-white text-[0.45rem] md:text-sm">
+              <p>ruelisrael22@gmail.com</p>
             </div>
         </div>
     </div>

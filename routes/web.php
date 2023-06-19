@@ -5,7 +5,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\HomeController;
 
 
-Route::get('/', [LandingController::class, 'index']);
+Route::get('/', [LandingController::class, 'index'])->name('index');
 
 Route::middleware(['auth', 'merchant', 'web'])->group(function () {
     // General

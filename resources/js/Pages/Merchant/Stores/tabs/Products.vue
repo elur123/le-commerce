@@ -4,6 +4,7 @@ import { useForm } from '@inertiajs/vue3'
 
 import Table from '@/Components/Table.vue'
 import Modal from '@/Components/Modal.vue'
+import Button from '@/Components/Button.vue'
 
 import AddProduct from '@/Pages/Merchant/Stores/tabs/partials/AddProduct.vue'
 import EditProduct from '@/Pages/Merchant/Stores/tabs/partials/EditProduct.vue'

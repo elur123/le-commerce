@@ -9,20 +9,31 @@ import Footer from '@/Pages/LandingPage/Components/Footer.vue'
 
 defineProps({
     banners: Object,
-    categories: Object
+    categories: Object,
+    products: Object,
+    couriers: Object,
 })
 </script>
 
 <template>
-    <Head title="LE-COMMERCE" />
+    <Head title="Shop now" />
 
     <div class="w-full h-full">
         <Header />
         <div id="main mb-8">
-            <Banner :banners="banners.data" />
-            <Categories :categories="categories.data" />
-            <DailyDiscover />
+            <Banner 
+                :banners="banners.data" 
+            />
+            <Categories 
+                :categories="categories.data" 
+            />
+            <DailyDiscover
+                :products="products.data"
+                :links="products.links"
+            />
         </div>
-        <Footer />
+        <Footer
+            :logistics="couriers.data" 
+        />
     </div>
 </template>

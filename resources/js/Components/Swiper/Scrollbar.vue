@@ -1,26 +1,43 @@
 <script setup>
-    import { Swiper, SwiperSlide } from 'swiper/vue';
-    import 'swiper/css';
-    import 'swiper/css/scrollbar';
-    import { FreeMode, Scrollbar } from 'swiper';
+import { onMounted, watch, ref } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/scrollbar';
+import { FreeMode, Scrollbar } from 'swiper';
 
-    const props = defineProps({
-        class: {
-            type: String,
-            default: ''
-        },
-        data: {
-            type: Array,
-            default: []
-        }
-    })
+const isMobile = ref(false)
 
-    const modules = [FreeMode, Scrollbar]
+const props = defineProps({
+    class: {
+        type: String,
+        default: ''
+    },
+    data: {
+        type: Array,
+        default: []
+    }
+})
+
+const modules = [FreeMode, Scrollbar]
+
+onMounted(() => {
+  isMobile.value = window.innerWidth < 768;
+
+  const handleResize = () => {
+    isMobile.value = window.innerWidth < 768;
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+});
 </script>
 
 <template>
   <swiper
-    :slidesPerView="6"
+    :slidesPerView="!isMobile ? 6 : 3"
     :spaceBetween="16"
     :scrollbar="{
       hide: true,
