@@ -3,7 +3,7 @@ import { useForm } from '@inertiajs/vue3'
 import { LockClosedIcon } from '@heroicons/vue/outline'
 import InputIconWrapper from '@/Components/InputIconWrapper.vue'
 import Button from '@/Components/Button.vue'
-import GuestLayout from '@/Layouts/Guest.vue'
+import AuthLayout from '@/Layouts/Auth.vue'
 import Input from '@/Components/Input.vue'
 import Label from '@/Components/Label.vue'
 import ValidationErrors from '@/Components/ValidationErrors.vue'
@@ -20,7 +20,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout title="Confirm Password">
+    <AuthLayout title="Confirm Password">
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
             This is a secure area of the application. Please confirm your password before continuing.
         </div>
@@ -46,5 +46,5 @@ const submit = () => {
                 </div>
             </div>
         </form>
-    </GuestLayout>
+    </AuthLayout>
 </template>

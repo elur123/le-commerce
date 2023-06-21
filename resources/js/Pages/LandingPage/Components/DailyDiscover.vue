@@ -1,9 +1,10 @@
 <script setup>
-import { usePage } from '@inertiajs/vue3'
+import { usePage, router } from '@inertiajs/vue3'
+import axios from 'axios'
 
+import Alert from '@/Services/SweetAlert'
 import Product from '@/Pages/LandingPage/Partials/Product.vue'
 import Button from '@/Components/Button.vue'
-import axios from 'axios'
 
 const filter = usePage().props.filter
 const meta = usePage().props.products.meta
@@ -16,6 +17,25 @@ const { products } = defineProps({
         default: []
     }
 })
+
+const addToCart = (data) => {
+
+    router.post(route('carts.store'), 
+        { 
+            'store_product_id': data.id,
+            'price': data.price,
+            'quantity': 1
+        }, 
+        {
+            preserveScroll: true,
+            onSuccess: res => {
+                if (res.props.flash.status) {
+                    Alert('success', 'Product added to cart')
+                }
+
+            }
+    })
+}
 
 const loadMore = async () => {
 
@@ -37,6 +57,7 @@ const loadMore = async () => {
                     v-for="(product, index) in products" 
                     :key="index" 
                     :details="product"
+                    @addToCart="addToCart"
                 />
             </div>
         </div>

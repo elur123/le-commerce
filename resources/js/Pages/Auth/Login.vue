@@ -4,7 +4,7 @@ import { MailIcon, LockClosedIcon, LoginIcon } from '@heroicons/vue/outline'
 import InputIconWrapper from '@/Components/InputIconWrapper.vue'
 import Button from '@/Components/Button.vue'
 import Checkbox from '@/Components/Checkbox.vue'
-import GuestLayout from '@/Layouts/Guest.vue'
+import AuthLayout from '@/Layouts/Auth.vue'
 import Input from '@/Components/Input.vue'
 import Label from '@/Components/Label.vue'
 import ValidationErrors from '@/Components/ValidationErrors.vue'
@@ -28,7 +28,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout title="Log in">
+    <AuthLayout title="Log in">
         <ValidationErrors class="mb-4" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
@@ -83,5 +83,5 @@ const submit = () => {
                 </p>
             </div>
         </form>
-    </GuestLayout>
+    </AuthLayout>
 </template>

@@ -51,6 +51,11 @@ class User extends Authenticatable
      * Relationship functions
      */
 
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'user_id');
+    } 
+
     public function merchant()
     {
         return $this->hasOne(Merchant::class, 'user_id');

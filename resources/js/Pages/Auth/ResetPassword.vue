@@ -3,7 +3,7 @@ import { useForm } from '@inertiajs/vue3'
 import { MailIcon, LockClosedIcon } from '@heroicons/vue/outline'
 import InputIconWrapper from '@/Components/InputIconWrapper.vue'
 import Button from '@/Components/Button.vue'
-import GuestLayout from '@/Layouts/Guest.vue'
+import AuthLayout from '@/Layouts/Auth.vue'
 import Input from '@/Components/Input.vue'
 import Label from '@/Components/Label.vue'
 import ValidationErrors from '@/Components/ValidationErrors.vue'
@@ -28,7 +28,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout title="Reset Password">
+    <AuthLayout title="Reset Password">
         <ValidationErrors class="mb-4" />
 
         <form @submit.prevent="submit">
@@ -70,5 +70,5 @@ const submit = () => {
                 </div>
             </div>
         </form>
-    </GuestLayout>
+    </AuthLayout>
 </template>

@@ -1,7 +1,7 @@
 <script setup>
 import { Link, useForm } from '@inertiajs/vue3'
 import { UserIcon, MailIcon, LockClosedIcon, UserAddIcon } from '@heroicons/vue/outline'
-import GuestLayout from '@/Layouts/Guest.vue'
+import AuthLayout from '@/Layouts/Auth.vue'
 import InputIconWrapper from '@/Components/InputIconWrapper.vue'
 import Input from '@/Components/Input.vue'
 import Checkbox from '@/Components/Checkbox.vue'
@@ -26,7 +26,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout title="Register">
+    <AuthLayout title="Register">
         <ValidationErrors class="mb-4" />
 
         <form @submit.prevent="submit">
@@ -77,7 +77,6 @@ const submit = () => {
                         type="checkbox"
                         class="block" 
                         v-model="form.is_merchant" 
-                        required autocomplete="username" 
                     />
                     <label class="m-0 text-sm font-medium text-gray-700 dark:text-white">Register as merchant</label>
                 </div>
@@ -99,5 +98,5 @@ const submit = () => {
             </div>
 
         </form>
-    </GuestLayout>
+    </AuthLayout>
 </template>

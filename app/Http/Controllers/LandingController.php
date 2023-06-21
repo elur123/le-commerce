@@ -13,6 +13,7 @@ use App\Models\Banner;
 use App\Models\Category;
 use App\Models\StoreProduct;
 use App\Models\Courier;
+use App\Models\Cart;
 class LandingController extends Controller
 {
     
@@ -22,11 +23,17 @@ class LandingController extends Controller
         ->with('product')
         ->paginate(10);
 
+        $carts = Cart::query()
+        ->with('storeProduct.product')
+        ->where('user_id', auth()->user()->id ?? null)
+        ->get();
+
         $data = [
             'banners' => BannerResource::collection(Banner::all()),
             'categories' => CategoryResource::collection(Category::all()),
             'products' => StoreProductResource::collection($products),
             'couriers' => CourierResource::collection(Courier::all()),
+            'cart_count' => $carts->count(),
             'filter' => [
                 'keyword' => request()->s,
                 'page' => request()->page,

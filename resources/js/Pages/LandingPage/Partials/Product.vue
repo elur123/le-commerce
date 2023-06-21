@@ -4,9 +4,15 @@ import { HeartIcon } from '@heroicons/vue/outline'
 import Ratings from '@/Components/Ratings.vue'
 import Button from '@/Components/Button.vue'
 
+const emit = defineEmits(['addToCart'])
+
 const props = defineProps({
     details: Object
 })
+
+const addToCart = (data) => {
+    emit('addToCart', data)
+}
 </script>
 <template>
     <div id="product" class="cursor-pointer group">
@@ -32,6 +38,7 @@ const props = defineProps({
             </div>
             <div id="actions">
                 <Button
+                    @click="addToCart(details)"
                     class="border-2 border-gray-600 rounded-xl hover:bg-orange-500 hover:text-white hover:border-orange-500"
                     variant="none"
                 >

@@ -17,7 +17,7 @@ class ValidateMerchant
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->role_id === Role::IS_USER ) 
+        if ($request->user()->role_id === Role::IS_USER && $request->user()->is_merchant) 
         {
             
             if (empty($request->user()->merchant)) 
@@ -33,6 +33,11 @@ class ValidateMerchant
                 return Redirect::route('merchant-registration.index', $step);
             }
 
+        }
+
+        if($request->user()->role_id === Role::IS_USER && !$request->user()->is_merchant)
+        {
+            return Redirect::route('index');
         }
 
         return $next($request);

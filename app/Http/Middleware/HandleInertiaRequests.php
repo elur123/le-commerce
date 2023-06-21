@@ -36,6 +36,11 @@ class HandleInertiaRequests extends Middleware
                 'isAdmin' => $request->user() ? $request->user()->role_id === Role::IS_ADMIN : false,
                 'user' => $request->user(),
             ],
+            'flash' => function () use ($request) {
+                return [
+                    'status' => $request->session()->get('status'),
+                ];
+            },
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
                     'location' => $request->url(),

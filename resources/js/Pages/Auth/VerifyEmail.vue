@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { Link, useForm } from '@inertiajs/vue3'
-import GuestLayout from '@/Layouts/Guest.vue'
+import AuthLayout from '@/Layouts/Auth.vue'
 import Button from '@/Components/Button.vue'
 
 const props = defineProps({
@@ -18,7 +18,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 </script>
 
 <template>
-    <GuestLayout title="Email Verification">
+    <AuthLayout title="Email Verification">
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
             Thanks for signing up! Before getting started, could you verify your
             email address by clicking on the link we just emailed to you? If you
@@ -52,5 +52,5 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                 </Link>
             </div>
         </form>
-    </GuestLayout>
+    </AuthLayout>
 </template>

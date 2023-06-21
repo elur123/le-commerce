@@ -3,7 +3,7 @@ import { useForm } from '@inertiajs/vue3'
 import { MailIcon, PaperAirplaneIcon } from '@heroicons/vue/outline'
 import InputIconWrapper from '@/Components/InputIconWrapper.vue'
 import Button from '@/Components/Button.vue'
-import GuestLayout from '@/Layouts/Guest.vue'
+import AuthLayout from '@/Layouts/Auth.vue'
 import Input from '@/Components/Input.vue'
 import Label from '@/Components/Label.vue'
 import ValidationErrors from '@/Components/ValidationErrors.vue'
@@ -22,7 +22,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout title="Forgot Password">
+    <AuthLayout title="Forgot Password">
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
             Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
         </div>
@@ -53,5 +53,5 @@ const submit = () => {
                 </div>
             </div>
         </form>
-    </GuestLayout>
+    </AuthLayout>
 </template>

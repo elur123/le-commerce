@@ -5,6 +5,10 @@ import { PhoneIcon } from '@heroicons/vue/outline'
 import ListBox from '@/Components/ListBox.vue'
 import Nav from '@/Pages/LandingPage/Components/Nav.vue'
 
+const props = defineProps({
+  cart_count: Number
+})
+
 const state = reactive({
   scrollPosition: 0
 });
@@ -42,7 +46,7 @@ const shouldHaveScrolledBackground = computed(() => {
                 <p>Shop Now</p>
             </div>
             <div class="text-white text-[0.45rem] md:text-sm">
-              <p>ruelisrael22@gmail.com</p>
+              <p>shopnow@gmail.com</p>
             </div>
         </div>
     </div>
@@ -53,6 +57,8 @@ const shouldHaveScrolledBackground = computed(() => {
             'bg-white shadow': shouldHaveScrolledBackground
         }"
     >
-        <Nav />
+        <Nav
+          :cart_count="cart_count"
+        />
     </header>
 </template>
